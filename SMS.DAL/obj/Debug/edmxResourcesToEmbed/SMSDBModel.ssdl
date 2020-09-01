@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MagicSMDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Desc" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MagicSMDB.dbo.Enrollment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Enrollment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="SchoolYear" Type="varchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MagicSMDB.dbo.Service' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+    </Key>
+    <Property Name="StudentId" Type="int" />
+    <Property Name="SchoolYear" Type="varchar" MaxLength="50" />
+    <Property Name="ServiceName" Type="varchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictId" Type="int" />
+    <Property Name="FirstName" Type="varchar" MaxLength="150" />
+    <Property Name="LastName" Type="varchar" MaxLength="100" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="SSN" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="MagicSMDBModelStoreContainer">
+    <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Enrollment" EntityType="Self.Enrollment" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Enrollment].[Id] AS [Id], 
+    [Enrollment].[StudentId] AS [StudentId], 
+    [Enrollment].[SchoolYear] AS [SchoolYear], 
+    [Enrollment].[StartDate] AS [StartDate], 
+    [Enrollment].[EndDate] AS [EndDate]
+    FROM [dbo].[Enrollment] AS [Enrollment]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Service" EntityType="Self.Service" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Service].[StudentId] AS [StudentId], 
+    [Service].[SchoolYear] AS [SchoolYear], 
+    [Service].[ServiceName] AS [ServiceName], 
+    [Service].[StartDate] AS [StartDate], 
+    [Service].[EndDate] AS [EndDate], 
+    [Service].[ServiceId] AS [ServiceId]
+    FROM [dbo].[Service] AS [Service]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

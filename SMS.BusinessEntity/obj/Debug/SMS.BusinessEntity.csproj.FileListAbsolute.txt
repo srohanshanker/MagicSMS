@@ -1,0 +1,6 @@
+C:\Rohan\Code Testing\Magic\SMS\SMS.BusinessEntity\bin\Debug\SMS.BusinessEntity.dll
+C:\Rohan\Code Testing\Magic\SMS\SMS.BusinessEntity\bin\Debug\SMS.BusinessEntity.pdb
+C:\Rohan\Code Testing\Magic\SMS\SMS.BusinessEntity\obj\Debug\SMS.BusinessEntity.csproj.CoreCompileInputs.cache
+C:\Rohan\Code Testing\Magic\SMS\SMS.BusinessEntity\obj\Debug\SMS.BusinessEntity.dll
+C:\Rohan\Code Testing\Magic\SMS\SMS.BusinessEntity\obj\Debug\SMS.BusinessEntity.pdb
+C:\Rohan\Code Testing\Magic\SMS\SMS.BusinessEntity\obj\Debug\SMS.BusinessEntity.csprojAssemblyReference.cache
